@@ -1,5 +1,6 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var path = require('path');
+
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 module.exports = {
     mode: 'development',
@@ -10,5 +11,18 @@ module.exports = {
     plugins: [new HtmlWebpackPlugin({
         title: 'chili',
         template: 'src/assets/test.html'
-    })]
+    })],
+    devtool: 'inline-source-map',
+    devServer: {
+             contentBase: './dist',
+      },
+    module: {
+        rules: [
+            {
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader'],
+            },
+        ],
+    }
+
 };
