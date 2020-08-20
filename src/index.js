@@ -10,6 +10,8 @@ div1.innerHTML = `
     <img src = ${p1}>
 `
 
+const button2 = document.createElement('button')
+button2.innerText = 'deploy'
 //懒加载
 const button = document.createElement('button')
 button.innerText = '懒加载'
