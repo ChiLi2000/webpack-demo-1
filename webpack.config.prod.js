@@ -17,16 +17,31 @@ module.exports = {
         rules: [
             ...base.module.rules,
             {
-                test: /\.css$/i,
+                test: /\.styl$/,
+                loader:[MiniCssExtractPlugin.loader, 'css-loader','stylus-loader']
+            },
+            {
+                test: /\.less$/,
+                loader: [MiniCssExtractPlugin.loader, 'css-loader','less-loader']
+            },
+
+            {
+                test: /\.scss$/i,
                 use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            publicPath: '../',
-                        },
-                    },
+                    MiniCssExtractPlugin.loader,
                     'css-loader',
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            implementation: require('dart-sass'),
+                        },
+                    }
                 ],
+            },
+            {
+                test: /\.css$/i,
+                loader: [MiniCssExtractPlugin.loader,'css-loader']
+
             },
         ]
     }
